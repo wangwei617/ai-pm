@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Agent 受控系统">
+  <defs>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef3f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#17202a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="960" height="540" fill="#f6f7fb"/>
+  <rect x="34" y="34" width="892" height="472" rx="8" fill="url(#panel)" stroke="#d8dee8" filter="url(#shadow)"/>
+  <text x="68" y="86" font-family="Arial, 'PingFang SC', sans-serif" font-size="28" font-weight="800" fill="#17202a">Agent 受控系统</text>
+  <text x="68" y="122" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#667085">模型负责推理，Harness 负责边界、工具和审计</text>
+  
+  <g font-family="Arial, 'PingFang SC', sans-serif">
+    <rect x="102" y="156" width="610" height="248" rx="8" fill="#f8fafc" stroke="#d8dee8"/>
+    <rect x="132" y="200" width="140" height="70" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="168" y="241" font-size="17" font-weight="800" fill="#17202a">模型</text>
+    <rect x="330" y="200" width="140" height="70" rx="8" fill="#dcfce7" stroke="#0f766e"/>
+    <text x="360" y="241" font-size="17" font-weight="800" fill="#17202a">Gateway</text>
+    <rect x="528" y="200" width="140" height="70" rx="8" fill="#fff7ed" stroke="#d97706"/>
+    <text x="568" y="241" font-size="17" font-weight="800" fill="#17202a">Tools</text>
+    <rect x="232" y="318" width="336" height="54" rx="8" fill="#17202a"/>
+    <text x="318" y="352" font-size="16" font-weight="800" fill="#fff">Trace · Policy · Human Review</text>
+    <path d="M272 235 H330 M470 235 H528 M598 270 V318 M202 270 V318" fill="none" stroke="#98a2b3" stroke-width="4"/>
+  </g>
+
+</svg>

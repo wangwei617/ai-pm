@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>90 天 AI Product Owner 学习路线 - AI Product Owner 成长知识库</title>
+  <meta name="description" content="90 天后，你应该能够：">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <div class="fixed left-0 top-0 z-[80] h-1 bg-gradient-to-r from-teal-500 via-blue-500 to-amber-400" id="progressBar"></div>
+  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+  <div class="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6">
+    <a class="flex items-center gap-3 font-black tracking-tight text-slate-950" href="../index.html">
+  <span class="grid h-9 w-9 place-items-center rounded-lg bg-slate-950 text-xs font-black text-white">APO</span>
+  <span class="hidden sm:inline">AI Product Owner 成长知识库</span>
+</a>
+    <nav class="hidden items-center gap-1 md:flex">
+      <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../index.html#paths">阅读路径</a>
+      <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../modules/start.html">模块</a>
+      <button class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-950" data-search-open>搜索</button>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-700 shadow-sm hover:bg-slate-50" data-search-open>搜索</button>
+      <button class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-700 shadow-sm hover:bg-slate-50 lg:hidden" data-nav-toggle>目录</button>
+    </div>
+  </div>
+</header>
+  <div class="mx-auto grid max-w-[1440px] grid-cols-1 lg:grid-cols-[320px_minmax(0,1fr)]">
+    <aside class="fixed inset-y-0 left-0 z-[70] w-[86vw] max-w-sm -translate-x-full overflow-y-auto border-r border-slate-200 bg-white p-4 shadow-2xl transition-transform lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:w-auto lg:max-w-none lg:translate-x-0 lg:shadow-none" id="sidebar">
+      <div class="mb-4 flex items-center justify-between lg:hidden">
+        <strong>文章目录</strong>
+        <button class="rounded-lg border border-slate-200 px-3 py-1 text-sm font-bold" data-nav-toggle>关闭</button>
+      </div>
+      <input class="mb-4 h-10 w-full rounded-lg border border-slate-200 px-3 text-sm outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10" type="search" placeholder="筛选文章..." data-nav-filter>
+      <section class="mb-5">
+  <a class="mb-2 flex items-center justify-between rounded-lg px-2 py-1.5 text-xs font-black uppercase tracking-wide text-teal-700 hover:bg-slate-100" href="../modules/start.html">
+    <span>入门与总览</span><span>9</span>
+  </a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-001.html" data-title="阅读指南与写作标准" data-module="入门与总览">
+  <span class="text-xs opacity-60">01</span>
+  <span class="truncate">阅读指南与写作标准</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-002.html" data-title="ai 产品经理全貌地图" data-module="入门与总览">
+  <span class="text-xs opacity-60">02</span>
+  <span class="truncate">AI 产品经理全貌地图</span>
+  <span class="text-[11px] opacity-60">4m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm bg-slate-950 text-white shadow-sm" href="../articles/doc-003.html" data-title="90 天 ai product owner 学习路线" data-module="入门与总览">
+  <span class="text-xs opacity-60">03</span>
+  <span class="truncate">90 天 AI Product Owner 学习路线</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-004.html" data-title="ai 产品经理能力模型" data-module="入门与总览">
+  <span class="text-xs opacity-60">04</span>
+  <span class="truncate">AI 产品经理能力模型</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-005.html" data-title="交互设计师转 ai 产品经理行动指南" data-module="入门与总览">
+  <span class="text-xs opacity-60">05</span>
+  <span class="truncate">交互设计师转 AI 产品经理行动指南</span>
+  <span class="text-[11px] opacity-60">3m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-054.html" data-title="ai product owner 版本升级说明" data-module="入门与总览">
+  <span class="text-xs opacity-60">06</span>
+  <span class="truncate">AI Product Owner 版本升级说明</span>
+  <span class="text-[11px] opacity-60">4m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-055.html" data-title="ai product owner 成长知识库" data-module="入门与总览">
+  <span class="text-xs opacity-60">07</span>
+  <span class="truncate">AI Product Owner 成长知识库</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-056.html" data-title="ai 产品经理需要懂的 ai 知识（分层次 · 重实操）" data-module="入门与总览">
+  <span class="text-xs opacity-60">08</span>
+  <span class="truncate">AI 产品经理需要懂的 AI 知识（分层次 · 重实操）</span>
+  <span class="text-[11px] opacity-60">35m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-057.html" data-title="yuanbao.md 内容合并清单" data-module="入门与总览">
+  <span class="text-xs opacity-60">09</span>
+  <span class="truncate">yuanbao.md 内容合并清单</span>
+  <span class="text-[11px] opacity-60">5m</span>
+</a>
+</section>
+<section class="mb-5">
+  <a class="mb-2 flex items-center justify-between rounded-lg px-2 py-1.5 text-xs font-black uppercase tracking-wide text-blue-700 hover:bg-slate-100" href="../modules/core.html">
+    <span>核心知识</span><span>20</span>
+  </a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-006.html" data-title="ai 场景判断" data-module="核心知识">
+  <span class="text-xs opacity-60">01</span>
+  <span class="truncate">AI 场景判断</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-007.html" data-title="ai 交互设计" data-module="核心知识">
+  <span class="text-xs opacity-60">02</span>
+  <span class="truncate">AI 交互设计</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-008.html" data-title="大语言模型基础" data-module="核心知识">
+  <span class="text-xs opacity-60">03</span>
+  <span class="truncate">大语言模型基础</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-009.html" data-title="prompt 工程与工作流设计" data-module="核心知识">
+  <span class="text-xs opacity-60">04</span>
+  <span class="truncate">Prompt 工程与工作流设计</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-010.html" data-title="rag 与知识库" data-module="核心知识">
+  <span class="text-xs opacity-60">05</span>
+  <span class="truncate">RAG 与知识库</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-011.html" data-title="agent 与工具调用" data-module="核心知识">
+  <span class="text-xs opacity-60">06</span>
+  <span class="truncate">Agent 与工具调用</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-012.html" data-title="ai 评测体系" data-module="核心知识">
+  <span class="text-xs opacity-60">07</span>
+  <span class="truncate">AI 评测体系</span>
+  <span class="text-[11px] opacity-60">3m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-013.html" data-title="数据与埋点" data-module="核心知识">
+  <span class="text-xs opacity-60">08</span>
+  <span class="truncate">数据与埋点</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-014.html" data-title="api 与技术协作基础" data-module="核心知识">
+  <span class="text-xs opacity-60">09</span>
+  <span class="truncate">API 与技术协作基础</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-015.html" data-title="成本、延迟与性能" data-module="核心知识">
+  <span class="text-xs opacity-60">10</span>
+  <span class="truncate">成本、延迟与性能</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-016.html" data-title="ai 安全、隐私与治理" data-module="核心知识">
+  <span class="text-xs opacity-60">11</span>
+  <span class="truncate">AI 安全、隐私与治理</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-017.html" data-title="ai 产品商业价值与 roi" data-module="核心知识">
+  <span class="text-xs opacity-60">12</span>
+  <span class="truncate">AI 产品商业价值与 ROI</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-018.html" data-title="ai 基础常识与能力边界" data-module="核心知识">
+  <span class="text-xs opacity-60">13</span>
+  <span class="truncate">AI 基础常识与能力边界</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-019.html" data-title="fine-tuning 与领域适配" data-module="核心知识">
+  <span class="text-xs opacity-60">14</span>
+  <span class="truncate">Fine-tuning 与领域适配</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-020.html" data-title="prompt 与 schema 产品契约" data-module="核心知识">
+  <span class="text-xs opacity-60">15</span>
+  <span class="truncate">Prompt 与 Schema 产品契约</span>
+  <span class="text-[11px] opacity-60">3m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-021.html" data-title="rag 进阶与产品验收" data-module="核心知识">
+  <span class="text-xs opacity-60">16</span>
+  <span class="truncate">RAG 进阶与产品验收</span>
+  <span class="text-[11px] opacity-60">4m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-022.html" data-title="数据飞轮与反馈闭环" data-module="核心知识">
+  <span class="text-xs opacity-60">17</span>
+  <span class="truncate">数据飞轮与反馈闭环</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-023.html" data-title="agent 产品结构与治理" data-module="核心知识">
+  <span class="text-xs opacity-60">18</span>
+  <span class="truncate">Agent 产品结构与治理</span>
+  <span class="text-[11px] opacity-60">5m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-024.html" data-title="skill 能力单元与暴露策略" data-module="核心知识">
+  <span class="text-xs opacity-60">19</span>
+  <span class="truncate">Skill 能力单元与暴露策略</span>
+  <span class="text-[11px] opacity-60">3m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-025.html" data-title="gateway 路由与 agent loop" data-module="核心知识">
+  <span class="text-xs opacity-60">20</span>
+  <span class="truncate">Gateway 路由与 Agent Loop</span>
+  <span class="text-[11px] opacity-60">4m</span>
+</a>
+</section>
+<section class="mb-5">
+  <a class="mb-2 flex items-center justify-between rounded-lg px-2 py-1.5 text-xs font-black uppercase tracking-wide text-amber-700 hover:bg-slate-100" href="../modules/project.html">
+    <span>实战项目</span><span>6</span>
+  </a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-026.html" data-title="实战项目：ai 用户研究洞察助手" data-module="实战项目">
+  <span class="text-xs opacity-60">01</span>
+  <span class="truncate">实战项目：AI 用户研究洞察助手</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-027.html" data-title="用户旅程与功能拆解" data-module="实战项目">
+  <span class="text-xs opacity-60">02</span>
+  <span class="truncate">用户旅程与功能拆解</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-028.html" data-title="ai 用户研究洞察助手 mvp prd" data-module="实战项目">
+  <span class="text-xs opacity-60">03</span>
+  <span class="truncate">AI 用户研究洞察助手 MVP PRD</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-029.html" data-title="prompt 工作流" data-module="实战项目">
+  <span class="text-xs opacity-60">04</span>
+  <span class="truncate">Prompt 工作流</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-030.html" data-title="评测方案" data-module="实战项目">
+  <span class="text-xs opacity-60">05</span>
+  <span class="truncate">评测方案</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-031.html" data-title="ai 用户研究洞察助手 owner 级落地计划" data-module="实战项目">
+  <span class="text-xs opacity-60">06</span>
+  <span class="truncate">AI 用户研究洞察助手 Owner 级落地计划</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+</section>
+<section class="mb-5">
+  <a class="mb-2 flex items-center justify-between rounded-lg px-2 py-1.5 text-xs font-black uppercase tracking-wide text-rose-700 hover:bg-slate-100" href="../modules/templates.html">
+    <span>工作模板</span><span>18</span>
+  </a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-032.html" data-title="ai prd 模板" data-module="工作模板">
+  <span class="text-xs opacity-60">01</span>
+  <span class="truncate">AI PRD 模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-033.html" data-title="ai 产品 roi 与复盘模板" data-module="工作模板">
+  <span class="text-xs opacity-60">02</span>
+  <span class="truncate">AI 产品 ROI 与复盘模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-034.html" data-title="ai 产品 roadmap 模板" data-module="工作模板">
+  <span class="text-xs opacity-60">03</span>
+  <span class="truncate">AI 产品 Roadmap 模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-035.html" data-title="ai 评测方案模板" data-module="工作模板">
+  <span class="text-xs opacity-60">04</span>
+  <span class="truncate">AI 评测方案模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-036.html" data-title="ai 质量周报模板" data-module="工作模板">
+  <span class="text-xs opacity-60">05</span>
+  <span class="truncate">AI 质量周报模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-037.html" data-title="ai 链路全景图模板" data-module="工作模板">
+  <span class="text-xs opacity-60">06</span>
+  <span class="truncate">AI 链路全景图模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-038.html" data-title="ai 风险分级模板" data-module="工作模板">
+  <span class="text-xs opacity-60">07</span>
+  <span class="truncate">AI 风险分级模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-039.html" data-title="agent 上线验收清单" data-module="工作模板">
+  <span class="text-xs opacity-60">08</span>
+  <span class="truncate">Agent 上线验收清单</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-040.html" data-title="agent 方案模板" data-module="工作模板">
+  <span class="text-xs opacity-60">09</span>
+  <span class="truncate">Agent 方案模板</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-041.html" data-title="prompt 设计模板" data-module="工作模板">
+  <span class="text-xs opacity-60">10</span>
+  <span class="truncate">Prompt 设计模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-042.html" data-title="raci 分工模板" data-module="工作模板">
+  <span class="text-xs opacity-60">11</span>
+  <span class="truncate">RACI 分工模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-043.html" data-title="rag 方案模板" data-module="工作模板">
+  <span class="text-xs opacity-60">12</span>
+  <span class="truncate">RAG 方案模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-044.html" data-title="skill 盘点与暴露策略模板" data-module="工作模板">
+  <span class="text-xs opacity-60">13</span>
+  <span class="truncate">Skill 盘点与暴露策略模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-045.html" data-title="ai 产品上线检查清单" data-module="工作模板">
+  <span class="text-xs opacity-60">14</span>
+  <span class="truncate">AI 产品上线检查清单</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-046.html" data-title="ai 信任触点清单模板" data-module="工作模板">
+  <span class="text-xs opacity-60">15</span>
+  <span class="truncate">AI 信任触点清单模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-047.html" data-title="核心章节写作模板" data-module="工作模板">
+  <span class="text-xs opacity-60">16</span>
+  <span class="truncate">核心章节写作模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-048.html" data-title="ai 红线清单模板" data-module="工作模板">
+  <span class="text-xs opacity-60">17</span>
+  <span class="truncate">AI 红线清单模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-049.html" data-title="ai 能力说明书模板" data-module="工作模板">
+  <span class="text-xs opacity-60">18</span>
+  <span class="truncate">AI 能力说明书模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+</section>
+<section class="mb-5">
+  <a class="mb-2 flex items-center justify-between rounded-lg px-2 py-1.5 text-xs font-black uppercase tracking-wide text-violet-700 hover:bg-slate-100" href="../modules/growth.html">
+    <span>成长与作战</span><span>4</span>
+  </a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-050.html" data-title="ai product owner 成长路线" data-module="成长与作战">
+  <span class="text-xs opacity-60">01</span>
+  <span class="truncate">AI Product Owner 成长路线</span>
+  <span class="text-[11px] opacity-60">3m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-051.html" data-title="ai product owner 能力模型" data-module="成长与作战">
+  <span class="text-xs opacity-60">02</span>
+  <span class="truncate">AI Product Owner 能力模型</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-052.html" data-title="ai product owner 作品集标准" data-module="成长与作战">
+  <span class="text-xs opacity-60">03</span>
+  <span class="truncate">AI Product Owner 作品集标准</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-053.html" data-title="从 0 到 1 落地 ai 产品" data-module="成长与作战">
+  <span class="text-xs opacity-60">04</span>
+  <span class="truncate">从 0 到 1 落地 AI 产品</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+</section>
+    </aside>
+    <main class="grid min-w-0 grid-cols-1 gap-6 px-4 py-6 xl:grid-cols-[minmax(0,820px)_280px] xl:px-8">
+      <article class="min-w-0 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+        <nav class="mb-5 flex flex-wrap items-center gap-2 text-sm text-slate-500">
+          <a class="font-bold hover:text-slate-950" href="../index.html">首页</a>
+          <span>/</span>
+          <a class="font-bold hover:text-slate-950" href="../modules/start.html">入门与总览</a>
+          <span>/</span>
+          <span>第 3 篇</span>
+        </nav>
+        <div class="mb-4 flex flex-wrap items-center gap-2">
+          <span class="rounded-full px-3 py-1 text-xs font-black ring-1 bg-teal-50 text-teal-700 ring-teal-200">入门与总览</span>
+          <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">基础</span>
+          <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">2 分钟阅读</span>
+        </div>
+        <h1 class="max-w-3xl text-4xl font-black leading-tight tracking-tight text-slate-950 sm:text-5xl">90 天 AI Product Owner 学习路线</h1>
+        <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-600">90 天后，你应该能够：</p>
+        <div class="mt-6 grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600 sm:grid-cols-3">
+          <div><span class="block text-xs font-black uppercase text-slate-400">当前位置</span><strong class="mt-1 block text-slate-950">入门与总览 · 3/9</strong></div>
+          <div><span class="block text-xs font-black uppercase text-slate-400">全库进度</span><strong class="mt-1 block text-slate-950">3/57 篇</strong></div>
+          <div><span class="block text-xs font-black uppercase text-slate-400">源文件</span><strong class="mt-1 block truncate text-slate-950">01-AI产品经理全貌/02-90天学习路线.md</strong></div>
+        </div>
+        <figure class="my-8 overflow-hidden rounded-xl border border-slate-200 bg-slate-50 p-3">
+          <img class="w-full rounded-lg" src="../assets/img/roadmap.svg" alt="把学习路径变成可执行的成长阶梯">
+          <figcaption class="mt-3 text-center text-sm text-slate-500">把学习路径变成可执行的成长阶梯</figcaption>
+        </figure>
+        <section class="not-prose my-8 rounded-xl border border-slate-200 bg-slate-50 p-5">
+  <div class="mb-4 flex flex-wrap items-center gap-2">
+    <span class="rounded-full px-3 py-1 text-xs font-black ring-1 bg-teal-50 text-teal-700 ring-teal-200">本篇导读</span>
+    <span class="text-sm font-semibold text-slate-500">成长路径与作品集</span>
+  </div>
+  <div class="grid gap-3 md:grid-cols-3">
+    <div class="rounded-lg border border-slate-200 bg-white p-4">
+      <div class="text-sm font-black text-slate-950">你会看懂</div>
+      <p class="mt-2 text-sm text-slate-600">能用一句话解释「90 天 AI Product Owner 学习路线」为什么值得学。</p>
+    </div>
+    <div class="rounded-lg border border-slate-200 bg-white p-4">
+      <div class="text-sm font-black text-slate-950">你会拿走</div>
+      <p class="mt-2 text-sm text-slate-600">阶段目标、能力缺口清单。</p>
+    </div>
+    <div class="rounded-lg border border-slate-200 bg-white p-4">
+      <div class="text-sm font-black text-slate-950">你要避免</div>
+      <p class="mt-2 text-sm text-slate-600">把学习路线写成工具清单。</p>
+    </div>
+  </div>
+</section>
+        <div class="article-content">
+          <h2 id="总目标">总目标</h2>
+<p>90 天后，你应该能够：</p>
+<ul><li>解释 AI 产品经理的完整工作范围。</li><li>独立识别一个适合 AI 的业务场景。</li><li>写出一份 AI PRD。</li><li>设计 AI 产品原型。</li><li>用低代码或 AI 工具做出可运行 Demo。</li><li>建立基础评测集。</li><li>形成一份可以面试或内部汇报的作品集。</li><li>讲清一个 AI 功能如何通过 Harness、Eval 和治理机制产生业务结果。</li></ul>
+<h2 id="4-6-周快速上手版">4-6 周快速上手版</h2>
+<p>如果你目前更想尽快在工作中用起来，可以先按这个压缩版推进：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>周</th><th>目标</th><th>可开会使用的产出</th></tr></thead>
+<tbody>
+<tr><td>W1</td><td>AI 地基、能力边界、成本直觉</td><td>1 页《为什么用 AI / 为什么不用 / 失败代价》</td></tr>
+<tr><td>W2</td><td>候选场景边界化</td><td>3 张场景卡：输入、输出、红线、替代方案</td></tr>
+<tr><td>W3</td><td>跑通 RAG 或 Prompt+Schema 最小闭环</td><td>1 条 Demo 链路 + 50 条 eval case</td></tr>
+<tr><td>W4</td><td>设计不确定性 UX</td><td>原型中体现引用、重试、编辑、采纳、纠错回流</td></tr>
+<tr><td>W5</td><td>设计上线与指标</td><td>上线 checklist、指标定义、人工抽检流程</td></tr>
+<tr><td>W6</td><td>建立数据飞轮</td><td>第一次迭代复盘：case 增长、通过率变化、成本变化</td></tr>
+</tbody></table></div>
+<h2 id="第-1-2-周-理解-ai-产品全貌">第 1-2 周：理解 AI 产品全貌</h2>
+<h3 id="学习重点">学习重点</h3>
+<ul><li>AI 产品经理和传统产品经理的区别。</li><li>LLM、RAG、Agent、Prompt、评测的基本概念。</li><li>AI 产品从 0 到 1 的完整流程。</li></ul>
+<h3 id="实践任务">实践任务</h3>
+<ul><li>梳理你所在行业或熟悉业务中的 10 个 AI 机会点。</li><li>为每个机会点写清楚：用户是谁、任务是什么、为什么适合 AI、风险是什么。</li><li>画一张自己的 AI 产品全貌地图。</li><li>画一张你熟悉场景的 AI 链路全景图。</li></ul>
+<h3 id="交付物">交付物</h3>
+<ul><li><code>AI 场景机会清单</code></li><li><code>AI 产品全貌图</code></li><li><code>AI 链路全景图</code></li></ul>
+<h2 id="第-3-4-周-训练-prompt-和工作流设计">第 3-4 周：训练 Prompt 和工作流设计</h2>
+<h3 id="学习重点-2">学习重点</h3>
+<ul><li>Prompt 的结构。</li><li>任务拆解。</li><li>结构化输出。</li><li>Few-shot 示例。</li><li>自检和纠错。</li></ul>
+<h3 id="实践任务-2">实践任务</h3>
+<p>选择一个真实任务，比如用户访谈分析、竞品分析、客服总结或需求提炼。</p>
+<p>设计 5 套 Prompt：</p>
+<ul><li>信息抽取 Prompt。</li><li>分类打标 Prompt。</li><li>总结归纳 Prompt。</li><li>机会点生成 Prompt。</li><li>PRD 草稿生成 Prompt。</li></ul>
+<h3 id="交付物-2">交付物</h3>
+<ul><li><code>Prompt 工作流文档</code></li><li><code>AI 输出样例</code></li><li><code>人工修订记录</code></li></ul>
+<h2 id="第-5-6-周-设计-ai-产品原型">第 5-6 周：设计 AI 产品原型</h2>
+<h3 id="学习重点-3">学习重点</h3>
+<ul><li>AI 输入引导。</li><li>等待与进度反馈。</li><li>输出结果展示。</li><li>引用和证据展示。</li><li>用户反馈机制。</li><li>人工接管。</li></ul>
+<h3 id="实践任务-3">实践任务</h3>
+<p>用 Figma 设计一个 AI 产品完整流程。建议选「AI 用户研究洞察助手」。</p>
+<p>核心页面包括：</p>
+<ul><li>首页或工作台。</li><li>上传/粘贴材料页。</li><li>分析中状态。</li><li>洞察结果页。</li><li>洞察详情页。</li><li>旅程地图页。</li><li>PRD 生成页。</li><li>反馈纠错入口。</li></ul>
+<p>同时补一份信任触点清单，说明用户如何看到来源、如何编辑、如何拒答后继续、如何纠错。</p>
+<h3 id="交付物-3">交付物</h3>
+<ul><li><code>AI 产品交互原型</code></li><li><code>关键页面说明</code></li><li><code>用户测试记录</code></li><li><code>信任触点清单</code></li></ul>
+<h2 id="第-7-8-周-做可运行-demo">第 7-8 周：做可运行 Demo</h2>
+<h3 id="学习重点-4">学习重点</h3>
+<ul><li>低代码 AI 工具。</li><li>API 基础。</li><li>JSON 输入输出。</li><li>RAG 或知识库配置。</li><li>简单 Agent 工具调用。</li></ul>
+<h3 id="实践任务-4">实践任务</h3>
+<p>用 Dify、Coze、n8n、Cursor、Lovable、Bolt 等工具之一，做出一个能跑的版本。</p>
+<p>最低可用标准：</p>
+<ul><li>用户可以输入材料。</li><li>AI 能输出结构化结果。</li><li>结果中包含证据或来源。</li><li>用户可以复制、编辑或反馈。</li></ul>
+<h3 id="交付物-4">交付物</h3>
+<ul><li><code>可运行 Demo</code></li><li><code>Demo 使用说明</code></li><li><code>技术实现说明</code></li></ul>
+<h2 id="第-9-10-周-建立-ai-评测体系">第 9-10 周：建立 AI 评测体系</h2>
+<h3 id="学习重点-5">学习重点</h3>
+<ul><li>为什么 AI 产品必须评测。</li><li>测试集设计。</li><li>人工标注。</li><li>指标定义。</li><li>错误案例分析。</li></ul>
+<h3 id="实践任务-5">实践任务</h3>
+<p>准备 30 条真实或模拟材料，人工标注理想答案。</p>
+<p>评测维度包括：</p>
+<ul><li>是否正确识别用户痛点。</li><li>是否遗漏关键信息。</li><li>是否引用了真实证据。</li><li>是否生成了可执行建议。</li><li>是否出现幻觉。</li></ul>
+<h3 id="交付物-5">交付物</h3>
+<ul><li><code>AI 评测集</code></li><li><code>评测报告</code></li><li><code>错误案例复盘</code></li></ul>
+<h2 id="第-11-12-周-形成作品集和提案">第 11-12 周：形成作品集和提案</h2>
+<h3 id="学习重点-6">学习重点</h3>
+<ul><li>如何讲清楚 AI 产品价值。</li><li>如何做 MVP 范围控制。</li><li>如何测算 ROI。</li><li>如何制定上线计划。</li></ul>
+<h3 id="实践任务-6">实践任务</h3>
+<p>把前面的成果整合成一份完整作品集或内部立项提案。</p>
+<p>建议结构：</p>
+<ul><li>背景与问题。</li><li>目标用户。</li><li>当前流程痛点。</li><li>AI 解决方案。</li><li>产品流程。</li><li>AI 链路全景图。</li><li>Harness 设计。</li><li>原型展示。</li><li>技术方案。</li><li>评测结果。</li><li>风险分级和治理方案。</li><li>上线指标和质量周报。</li><li>商业价值。</li><li>ROI 估算。</li><li>风险控制。</li><li>后续 Roadmap。</li></ul>
+<h3 id="交付物-6">交付物</h3>
+<ul><li><code>AI 产品作品集</code></li><li><code>内部立项提案</code></li><li><code>面试讲述稿</code></li><li><code>AI Product Owner 复盘报告</code></li></ul>
+        </div>
+        <section class="not-prose mt-12 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+  <div class="mb-5">
+    <span class="rounded-full px-3 py-1 text-xs font-black ring-1 bg-teal-50 text-teal-700 ring-teal-200">实战化补充</span>
+    <h2 class="mt-4 text-2xl font-black tracking-tight text-slate-950">把「90 天 AI Product Owner 学习路线」用到真实工作里</h2>
+    <p class="mt-2 text-slate-600">这一段不是补术语，而是帮你把文章从“读懂”推进到“能用”。公开分享时，读者最需要的通常不是更多概念，而是知道下一步该怎么做。</p>
+  </div>
+  <div class="grid gap-4 lg:grid-cols-2">
+    <div class="rounded-lg bg-slate-50 p-4">
+      <h3 class="text-base font-black text-slate-950">轻松理解</h3>
+      <p class="mt-2 text-sm leading-7 text-slate-600">转型不是补一堆名词，而是攒一组能证明你会落地的证据：图、表、样本、复盘和业务结果。</p>
+    </div>
+    <div class="rounded-lg bg-slate-50 p-4">
+      <h3 class="text-base font-black text-slate-950">业务小案例</h3>
+      <p class="mt-2 text-sm leading-7 text-slate-600">从交互设计师转 AI Product Owner，优势不是懂模型参数，而是能把不确定输出设计成可复核、可编辑、可回滚、可评测的产品体验。</p>
+    </div>
+    <div class="rounded-lg bg-slate-50 p-4">
+      <h3 class="text-base font-black text-slate-950">常见翻车点</h3>
+      <ul class="mt-2 space-y-2 text-sm leading-7 text-slate-600">
+        <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-500"></span><span>把学习路线写成工具清单</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-500"></span><span>作品集只展示界面，不展示评测和结果</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-500"></span><span>只说参与项目，不说自己负责的判断和取舍</span></li>
+      </ul>
+    </div>
+    <div class="rounded-lg bg-slate-50 p-4">
+      <h3 class="text-base font-black text-slate-950">建议沉淀的交付物</h3>
+      <ul class="mt-2 space-y-2 text-sm leading-7 text-slate-600">
+        <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"></span><span>阶段目标</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"></span><span>能力缺口清单</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"></span><span>每周练习任务</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"></span><span>作品集证据</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-4 rounded-lg border border-dashed border-slate-300 bg-white p-4">
+    <h3 class="text-base font-black text-slate-950">读完马上做</h3>
+    <p class="mt-2 text-sm leading-7 text-slate-600">选一个你做过的项目，用“业务问题-为什么用 AI-链路设计-评测-结果”重写成一页作品集。</p>
+  </div>
+  <div class="mt-4 rounded-lg bg-slate-950 p-4 text-white">
+    <div class="text-xs font-black uppercase text-slate-400">一句可复述总结</div>
+    <p class="mt-2 text-base font-semibold leading-7">学习「90 天 AI Product Owner 学习路线」的重点，不是背定义，而是把它变成可判断、可设计、可验收、可复盘的产品工作。</p>
+  </div>
+  <p class="mt-4 text-xs text-slate-400">增强来源：01-AI产品经理全貌/02-90天学习路线.md · 主题识别：成长路径与作品集</p>
+</section>
+        <nav class="mt-6 grid gap-3 sm:grid-cols-2">
+          <a class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm hover:border-slate-300" href="doc-002.html"><span class="text-xs font-bold text-slate-400">上一篇</span><strong class="mt-1 block text-slate-950">AI 产品经理全貌地图</strong></a><a class="rounded-xl border border-slate-200 bg-white p-4 text-right shadow-sm hover:border-slate-300" href="doc-004.html"><span class="text-xs font-bold text-slate-400">下一篇</span><strong class="mt-1 block text-slate-950">AI 产品经理能力模型</strong></a>
+        </nav>
+      </article>
+      <aside class="hidden xl:block">
+        <div class="sticky top-24 space-y-4">
+          <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div class="mb-3 text-sm font-black text-slate-950">本文目录</div>
+            <a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#总目标">总目标</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#4-6-周快速上手版">4-6 周快速上手版</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#第-1-2-周-理解-ai-产品全貌">第 1-2 周：理解 AI 产品全貌</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#学习重点">学习重点</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#实践任务">实践任务</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#交付物">交付物</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#第-3-4-周-训练-prompt-和工作流设计">第 3-4 周：训练 Prompt 和工作流设计</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#学习重点-2">学习重点</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#实践任务-2">实践任务</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#交付物-2">交付物</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#第-5-6-周-设计-ai-产品原型">第 5-6 周：设计 AI 产品原型</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#学习重点-3">学习重点</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#实践任务-3">实践任务</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#交付物-3">交付物</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#第-7-8-周-做可运行-demo">第 7-8 周：做可运行 Demo</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#学习重点-4">学习重点</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#实践任务-4">实践任务</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#交付物-4">交付物</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#第-9-10-周-建立-ai-评测体系">第 9-10 周：建立 AI 评测体系</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#学习重点-5">学习重点</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#实践任务-5">实践任务</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#交付物-5">交付物</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#第-11-12-周-形成作品集和提案">第 11-12 周：形成作品集和提案</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#学习重点-6">学习重点</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#实践任务-6">实践任务</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#交付物-6">交付物</a>
+          </div>
+          <div class="rounded-xl border border-teal-200 bg-teal-50 p-4">
+            <div class="text-sm font-black text-slate-950">模块目标</div>
+            <p class="mt-2 text-sm leading-6 text-slate-600">帮读者建立 AI Product Owner 的整体坐标，知道自己要补什么、先读什么、最后要交付什么。</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+  <div class="fixed inset-0 z-[90] hidden bg-slate-950/40 p-4 pt-[8vh]" data-search-modal aria-hidden="true">
+  <div class="mx-auto max-w-3xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl">
+    <div class="flex gap-3 border-b border-slate-200 p-3">
+      <input class="min-h-12 flex-1 rounded-lg border border-slate-200 px-4 text-base outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10" type="search" placeholder="搜索 RAG、Agent、Eval、治理、作品集..." data-search-input>
+      <button class="rounded-lg bg-slate-950 px-4 text-sm font-bold text-white" data-search-close>关闭</button>
+    </div>
+    <div class="max-h-[62vh] overflow-auto p-2" data-search-results></div>
+  </div>
+</div>
+  <script src="../assets/js/search-index.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

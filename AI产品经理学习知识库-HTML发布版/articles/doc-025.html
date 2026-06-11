@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gateway 路由与 Agent Loop - AI Product Owner 成长知识库</title>
+  <meta name="description" content="路由决定请求走哪条路，Loop 决定进入 Agent 后怎么一步步执行。">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <div class="fixed left-0 top-0 z-[80] h-1 bg-gradient-to-r from-teal-500 via-blue-500 to-amber-400" id="progressBar"></div>
+  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+  <div class="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-6">
+    <a class="flex items-center gap-3 font-black tracking-tight text-slate-950" href="../index.html">
+  <span class="grid h-9 w-9 place-items-center rounded-lg bg-slate-950 text-xs font-black text-white">APO</span>
+  <span class="hidden sm:inline">AI Product Owner 成长知识库</span>
+</a>
+    <nav class="hidden items-center gap-1 md:flex">
+      <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../index.html#paths">阅读路径</a>
+      <a class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../modules/start.html">模块</a>
+      <button class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 hover:text-slate-950" data-search-open>搜索</button>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-700 shadow-sm hover:bg-slate-50" data-search-open>搜索</button>
+      <button class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-700 shadow-sm hover:bg-slate-50 lg:hidden" data-nav-toggle>目录</button>
+    </div>
+  </div>
+</header>
+  <div class="mx-auto grid max-w-[1440px] grid-cols-1 lg:grid-cols-[320px_minmax(0,1fr)]">
+    <aside class="fixed inset-y-0 left-0 z-[70] w-[86vw] max-w-sm -translate-x-full overflow-y-auto border-r border-slate-200 bg-white p-4 shadow-2xl transition-transform lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:w-auto lg:max-w-none lg:translate-x-0 lg:shadow-none" id="sidebar">
+      <div class="mb-4 flex items-center justify-between lg:hidden">
+        <strong>文章目录</strong>
+        <button class="rounded-lg border border-slate-200 px-3 py-1 text-sm font-bold" data-nav-toggle>关闭</button>
+      </div>
+      <input class="mb-4 h-10 w-full rounded-lg border border-slate-200 px-3 text-sm outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10" type="search" placeholder="筛选文章..." data-nav-filter>
+      <section class="mb-5">
+  <a class="mb-2 flex items-center justify-between rounded-lg px-2 py-1.5 text-xs font-black uppercase tracking-wide text-teal-700 hover:bg-slate-100" href="../modules/start.html">
+    <span>入门与总览</span><span>9</span>
+  </a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-001.html" data-title="阅读指南与写作标准" data-module="入门与总览">
+  <span class="text-xs opacity-60">01</span>
+  <span class="truncate">阅读指南与写作标准</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-002.html" data-title="ai 产品经理全貌地图" data-module="入门与总览">
+  <span class="text-xs opacity-60">02</span>
+  <span class="truncate">AI 产品经理全貌地图</span>
+  <span class="text-[11px] opacity-60">4m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-003.html" data-title="90 天 ai product owner 学习路线" data-module="入门与总览">
+  <span class="text-xs opacity-60">03</span>
+  <span class="truncate">90 天 AI Product Owner 学习路线</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-004.html" data-title="ai 产品经理能力模型" data-module="入门与总览">
+  <span class="text-xs opacity-60">04</span>
+  <span class="truncate">AI 产品经理能力模型</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-005.html" data-title="交互设计师转 ai 产品经理行动指南" data-module="入门与总览">
+  <span class="text-xs opacity-60">05</span>
+  <span class="truncate">交互设计师转 AI 产品经理行动指南</span>
+  <span class="text-[11px] opacity-60">3m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-054.html" data-title="ai product owner 版本升级说明" data-module="入门与总览">
+  <span class="text-xs opacity-60">06</span>
+  <span class="truncate">AI Product Owner 版本升级说明</span>
+  <span class="text-[11px] opacity-60">4m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-055.html" data-title="ai product owner 成长知识库" data-module="入门与总览">
+  <span class="text-xs opacity-60">07</span>
+  <span class="truncate">AI Product Owner 成长知识库</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-056.html" data-title="ai 产品经理需要懂的 ai 知识（分层次 · 重实操）" data-module="入门与总览">
+  <span class="text-xs opacity-60">08</span>
+  <span class="truncate">AI 产品经理需要懂的 AI 知识（分层次 · 重实操）</span>
+  <span class="text-[11px] opacity-60">35m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-057.html" data-title="yuanbao.md 内容合并清单" data-module="入门与总览">
+  <span class="text-xs opacity-60">09</span>
+  <span class="truncate">yuanbao.md 内容合并清单</span>
+  <span class="text-[11px] opacity-60">5m</span>
+</a>
+</section>
+<section class="mb-5">
+  <a class="mb-2 flex items-center justify-between rounded-lg px-2 py-1.5 text-xs font-black uppercase tracking-wide text-blue-700 hover:bg-slate-100" href="../modules/core.html">
+    <span>核心知识</span><span>20</span>
+  </a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-006.html" data-title="ai 场景判断" data-module="核心知识">
+  <span class="text-xs opacity-60">01</span>
+  <span class="truncate">AI 场景判断</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-007.html" data-title="ai 交互设计" data-module="核心知识">
+  <span class="text-xs opacity-60">02</span>
+  <span class="truncate">AI 交互设计</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-008.html" data-title="大语言模型基础" data-module="核心知识">
+  <span class="text-xs opacity-60">03</span>
+  <span class="truncate">大语言模型基础</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-009.html" data-title="prompt 工程与工作流设计" data-module="核心知识">
+  <span class="text-xs opacity-60">04</span>
+  <span class="truncate">Prompt 工程与工作流设计</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-010.html" data-title="rag 与知识库" data-module="核心知识">
+  <span class="text-xs opacity-60">05</span>
+  <span class="truncate">RAG 与知识库</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-011.html" data-title="agent 与工具调用" data-module="核心知识">
+  <span class="text-xs opacity-60">06</span>
+  <span class="truncate">Agent 与工具调用</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-012.html" data-title="ai 评测体系" data-module="核心知识">
+  <span class="text-xs opacity-60">07</span>
+  <span class="truncate">AI 评测体系</span>
+  <span class="text-[11px] opacity-60">3m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-013.html" data-title="数据与埋点" data-module="核心知识">
+  <span class="text-xs opacity-60">08</span>
+  <span class="truncate">数据与埋点</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-014.html" data-title="api 与技术协作基础" data-module="核心知识">
+  <span class="text-xs opacity-60">09</span>
+  <span class="truncate">API 与技术协作基础</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-015.html" data-title="成本、延迟与性能" data-module="核心知识">
+  <span class="text-xs opacity-60">10</span>
+  <span class="truncate">成本、延迟与性能</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-016.html" data-title="ai 安全、隐私与治理" data-module="核心知识">
+  <span class="text-xs opacity-60">11</span>
+  <span class="truncate">AI 安全、隐私与治理</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-017.html" data-title="ai 产品商业价值与 roi" data-module="核心知识">
+  <span class="text-xs opacity-60">12</span>
+  <span class="truncate">AI 产品商业价值与 ROI</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-018.html" data-title="ai 基础常识与能力边界" data-module="核心知识">
+  <span class="text-xs opacity-60">13</span>
+  <span class="truncate">AI 基础常识与能力边界</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-019.html" data-title="fine-tuning 与领域适配" data-module="核心知识">
+  <span class="text-xs opacity-60">14</span>
+  <span class="truncate">Fine-tuning 与领域适配</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-020.html" data-title="prompt 与 schema 产品契约" data-module="核心知识">
+  <span class="text-xs opacity-60">15</span>
+  <span class="truncate">Prompt 与 Schema 产品契约</span>
+  <span class="text-[11px] opacity-60">3m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-021.html" data-title="rag 进阶与产品验收" data-module="核心知识">
+  <span class="text-xs opacity-60">16</span>
+  <span class="truncate">RAG 进阶与产品验收</span>
+  <span class="text-[11px] opacity-60">4m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-022.html" data-title="数据飞轮与反馈闭环" data-module="核心知识">
+  <span class="text-xs opacity-60">17</span>
+  <span class="truncate">数据飞轮与反馈闭环</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-023.html" data-title="agent 产品结构与治理" data-module="核心知识">
+  <span class="text-xs opacity-60">18</span>
+  <span class="truncate">Agent 产品结构与治理</span>
+  <span class="text-[11px] opacity-60">5m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-024.html" data-title="skill 能力单元与暴露策略" data-module="核心知识">
+  <span class="text-xs opacity-60">19</span>
+  <span class="truncate">Skill 能力单元与暴露策略</span>
+  <span class="text-[11px] opacity-60">3m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm bg-slate-950 text-white shadow-sm" href="../articles/doc-025.html" data-title="gateway 路由与 agent loop" data-module="核心知识">
+  <span class="text-xs opacity-60">20</span>
+  <span class="truncate">Gateway 路由与 Agent Loop</span>
+  <span class="text-[11px] opacity-60">4m</span>
+</a>
+</section>
+<section class="mb-5">
+  <a class="mb-2 flex items-center justify-between rounded-lg px-2 py-1.5 text-xs font-black uppercase tracking-wide text-amber-700 hover:bg-slate-100" href="../modules/project.html">
+    <span>实战项目</span><span>6</span>
+  </a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-026.html" data-title="实战项目：ai 用户研究洞察助手" data-module="实战项目">
+  <span class="text-xs opacity-60">01</span>
+  <span class="truncate">实战项目：AI 用户研究洞察助手</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-027.html" data-title="用户旅程与功能拆解" data-module="实战项目">
+  <span class="text-xs opacity-60">02</span>
+  <span class="truncate">用户旅程与功能拆解</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-028.html" data-title="ai 用户研究洞察助手 mvp prd" data-module="实战项目">
+  <span class="text-xs opacity-60">03</span>
+  <span class="truncate">AI 用户研究洞察助手 MVP PRD</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-029.html" data-title="prompt 工作流" data-module="实战项目">
+  <span class="text-xs opacity-60">04</span>
+  <span class="truncate">Prompt 工作流</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-030.html" data-title="评测方案" data-module="实战项目">
+  <span class="text-xs opacity-60">05</span>
+  <span class="truncate">评测方案</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-031.html" data-title="ai 用户研究洞察助手 owner 级落地计划" data-module="实战项目">
+  <span class="text-xs opacity-60">06</span>
+  <span class="truncate">AI 用户研究洞察助手 Owner 级落地计划</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+</section>
+<section class="mb-5">
+  <a class="mb-2 flex items-center justify-between rounded-lg px-2 py-1.5 text-xs font-black uppercase tracking-wide text-rose-700 hover:bg-slate-100" href="../modules/templates.html">
+    <span>工作模板</span><span>18</span>
+  </a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-032.html" data-title="ai prd 模板" data-module="工作模板">
+  <span class="text-xs opacity-60">01</span>
+  <span class="truncate">AI PRD 模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-033.html" data-title="ai 产品 roi 与复盘模板" data-module="工作模板">
+  <span class="text-xs opacity-60">02</span>
+  <span class="truncate">AI 产品 ROI 与复盘模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-034.html" data-title="ai 产品 roadmap 模板" data-module="工作模板">
+  <span class="text-xs opacity-60">03</span>
+  <span class="truncate">AI 产品 Roadmap 模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-035.html" data-title="ai 评测方案模板" data-module="工作模板">
+  <span class="text-xs opacity-60">04</span>
+  <span class="truncate">AI 评测方案模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-036.html" data-title="ai 质量周报模板" data-module="工作模板">
+  <span class="text-xs opacity-60">05</span>
+  <span class="truncate">AI 质量周报模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-037.html" data-title="ai 链路全景图模板" data-module="工作模板">
+  <span class="text-xs opacity-60">06</span>
+  <span class="truncate">AI 链路全景图模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-038.html" data-title="ai 风险分级模板" data-module="工作模板">
+  <span class="text-xs opacity-60">07</span>
+  <span class="truncate">AI 风险分级模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-039.html" data-title="agent 上线验收清单" data-module="工作模板">
+  <span class="text-xs opacity-60">08</span>
+  <span class="truncate">Agent 上线验收清单</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-040.html" data-title="agent 方案模板" data-module="工作模板">
+  <span class="text-xs opacity-60">09</span>
+  <span class="truncate">Agent 方案模板</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-041.html" data-title="prompt 设计模板" data-module="工作模板">
+  <span class="text-xs opacity-60">10</span>
+  <span class="truncate">Prompt 设计模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-042.html" data-title="raci 分工模板" data-module="工作模板">
+  <span class="text-xs opacity-60">11</span>
+  <span class="truncate">RACI 分工模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-043.html" data-title="rag 方案模板" data-module="工作模板">
+  <span class="text-xs opacity-60">12</span>
+  <span class="truncate">RAG 方案模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-044.html" data-title="skill 盘点与暴露策略模板" data-module="工作模板">
+  <span class="text-xs opacity-60">13</span>
+  <span class="truncate">Skill 盘点与暴露策略模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-045.html" data-title="ai 产品上线检查清单" data-module="工作模板">
+  <span class="text-xs opacity-60">14</span>
+  <span class="truncate">AI 产品上线检查清单</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-046.html" data-title="ai 信任触点清单模板" data-module="工作模板">
+  <span class="text-xs opacity-60">15</span>
+  <span class="truncate">AI 信任触点清单模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-047.html" data-title="核心章节写作模板" data-module="工作模板">
+  <span class="text-xs opacity-60">16</span>
+  <span class="truncate">核心章节写作模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-048.html" data-title="ai 红线清单模板" data-module="工作模板">
+  <span class="text-xs opacity-60">17</span>
+  <span class="truncate">AI 红线清单模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-049.html" data-title="ai 能力说明书模板" data-module="工作模板">
+  <span class="text-xs opacity-60">18</span>
+  <span class="truncate">AI 能力说明书模板</span>
+  <span class="text-[11px] opacity-60">1m</span>
+</a>
+</section>
+<section class="mb-5">
+  <a class="mb-2 flex items-center justify-between rounded-lg px-2 py-1.5 text-xs font-black uppercase tracking-wide text-violet-700 hover:bg-slate-100" href="../modules/growth.html">
+    <span>成长与作战</span><span>4</span>
+  </a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-050.html" data-title="ai product owner 成长路线" data-module="成长与作战">
+  <span class="text-xs opacity-60">01</span>
+  <span class="truncate">AI Product Owner 成长路线</span>
+  <span class="text-[11px] opacity-60">3m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-051.html" data-title="ai product owner 能力模型" data-module="成长与作战">
+  <span class="text-xs opacity-60">02</span>
+  <span class="truncate">AI Product Owner 能力模型</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-052.html" data-title="ai product owner 作品集标准" data-module="成长与作战">
+  <span class="text-xs opacity-60">03</span>
+  <span class="truncate">AI Product Owner 作品集标准</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+<a class="group mb-1 grid grid-cols-[1.5rem_minmax(0,1fr)_auto] items-center gap-2 rounded-lg px-2 py-2 text-sm text-slate-600 hover:bg-slate-100 hover:text-slate-950" href="../articles/doc-053.html" data-title="从 0 到 1 落地 ai 产品" data-module="成长与作战">
+  <span class="text-xs opacity-60">04</span>
+  <span class="truncate">从 0 到 1 落地 AI 产品</span>
+  <span class="text-[11px] opacity-60">2m</span>
+</a>
+</section>
+    </aside>
+    <main class="grid min-w-0 grid-cols-1 gap-6 px-4 py-6 xl:grid-cols-[minmax(0,820px)_280px] xl:px-8">
+      <article class="min-w-0 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+        <nav class="mb-5 flex flex-wrap items-center gap-2 text-sm text-slate-500">
+          <a class="font-bold hover:text-slate-950" href="../index.html">首页</a>
+          <span>/</span>
+          <a class="font-bold hover:text-slate-950" href="../modules/core.html">核心知识</a>
+          <span>/</span>
+          <span>第 20 篇</span>
+        </nav>
+        <div class="mb-4 flex flex-wrap items-center gap-2">
+          <span class="rounded-full px-3 py-1 text-xs font-black ring-1 bg-blue-50 text-blue-700 ring-blue-200">核心知识</span>
+          <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">进阶</span>
+          <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">4 分钟阅读</span>
+        </div>
+        <h1 class="max-w-3xl text-4xl font-black leading-tight tracking-tight text-slate-950 sm:text-5xl">Gateway 路由与 Agent Loop</h1>
+        <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-600">路由决定请求走哪条路，Loop 决定进入 Agent 后怎么一步步执行。</p>
+        <div class="mt-6 grid gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600 sm:grid-cols-3">
+          <div><span class="block text-xs font-black uppercase text-slate-400">当前位置</span><strong class="mt-1 block text-slate-950">核心知识 · 20/20</strong></div>
+          <div><span class="block text-xs font-black uppercase text-slate-400">全库进度</span><strong class="mt-1 block text-slate-950">25/57 篇</strong></div>
+          <div><span class="block text-xs font-black uppercase text-slate-400">源文件</span><strong class="mt-1 block truncate text-slate-950">02-核心知识点详解/20-Gateway路由与Agent Loop.md</strong></div>
+        </div>
+        <figure class="my-8 overflow-hidden rounded-xl border border-slate-200 bg-slate-50 p-3">
+          <img class="w-full rounded-lg" src="../assets/img/agent-system.svg" alt="把模型能力装进受控的业务系统">
+          <figcaption class="mt-3 text-center text-sm text-slate-500">把模型能力装进受控的业务系统</figcaption>
+        </figure>
+        <section class="not-prose my-8 rounded-xl border border-slate-200 bg-slate-50 p-5">
+  <div class="mb-4 flex flex-wrap items-center gap-2">
+    <span class="rounded-full px-3 py-1 text-xs font-black ring-1 bg-blue-50 text-blue-700 ring-blue-200">本篇导读</span>
+    <span class="text-sm font-semibold text-slate-500">Agent 与能力编排</span>
+  </div>
+  <div class="grid gap-3 md:grid-cols-3">
+    <div class="rounded-lg border border-slate-200 bg-white p-4">
+      <div class="text-sm font-black text-slate-950">你会看懂</div>
+      <p class="mt-2 text-sm text-slate-600">能用一句话解释「Gateway 路由与 Agent Loop」为什么值得学。</p>
+    </div>
+    <div class="rounded-lg border border-slate-200 bg-white p-4">
+      <div class="text-sm font-black text-slate-950">你会拿走</div>
+      <p class="mt-2 text-sm text-slate-600">工具白名单、Skill 登记表。</p>
+    </div>
+    <div class="rounded-lg border border-slate-200 bg-white p-4">
+      <div class="text-sm font-black text-slate-950">你要避免</div>
+      <p class="mt-2 text-sm text-slate-600">把高风险工具直接暴露给模型。</p>
+    </div>
+  </div>
+</section>
+        <div class="article-content">
+          <h2 id="0-一句话抓住本质">0. 一句话抓住本质</h2>
+<p>路由决定请求走哪条路，Loop 决定进入 Agent 后怎么一步步执行。</p>
+<p>路由是调度中心，Loop 是行程本身。</p>
+<h2 id="1-这两个概念是什么">1. 这两个概念是什么</h2>
+<p>Gateway 路由解决的是：</p>
+<pre><code class="language-text">用户这个请求应该走哪条业务链路？</code></pre>
+<p>Agent Loop 解决的是：</p>
+<pre><code class="language-text">进入 Agent 后，每一步如何执行、观察、再决策，以及什么时候停止？</code></pre>
+<p>一个在入口层，一个在执行层。</p>
+<h2 id="2-路由是什么">2. 路由是什么</h2>
+<p>路由是对用户输入做的第一个关键决策：识别用户核心意图，并决定由哪条业务链路服务。</p>
+<p>用户输入可能来自：</p>
+<ul><li>聊天消息。</li><li>CLI。</li><li>Webhook/API。</li><li>定时任务。</li><li>表单。</li><li>按钮。</li></ul>
+<p>路由层要判断：</p>
+<ul><li>这是知识查询吗？</li><li>这是安全的只读操作吗？</li><li>这是写操作吗？</li><li>这是复杂多步任务吗？</li><li>这个请求风险等级是什么？</li><li>用户是否有权限？</li></ul>
+<h2 id="2-1-用汽车比喻讲明白">2.1 用汽车比喻讲明白</h2>
+<p>用户可以从不同入口叫车：</p>
+<ul><li>聊天：师傅，去机场。</li><li>App：设置目的地后点出发。</li><li>定时任务：每天 7 点去公司。</li></ul>
+<p>Gateway 就是调度中心。</p>
+<p>它不会把用户原话直接扔给司机，让司机自己猜今天该开快递车、救火车还是越野车。</p>
+<p>它会先判断任务类型、风险和权限，再决定派哪条业务链路。</p>
+<h2 id="3-常见路由结果">3. 常见路由结果</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>路由结果</th><th>对应链路</th><th>特点</th></tr></thead>
+<tbody>
+<tr><td>知识/查询意图</td><td>RAG 链路</td><td>只读，检索 + 生成</td></tr>
+<tr><td>只读操作意图</td><td>Safe Skill 链路</td><td>调安全工具，直接返回</td></tr>
+<tr><td>写操作/复杂任务</td><td>Agent 链路</td><td>多步执行，预览、确认、审计</td></tr>
+<tr><td>高风险/越权</td><td>拒绝或人工审核</td><td>不进入模型自由执行</td></tr>
+</tbody></table></div>
+<p>示例：</p>
+<pre><code class="language-text">用户问：产假怎么请？
+→ 路由到 RAG 链路
+
+用户点：查订单状态
+→ 路由到 Safe Skill 链路
+
+用户说：帮我改收货地址并通知客户
+→ 路由到 Agent 链路，需要预览、确认、审计</code></pre>
+<h2 id="4-为什么不要把路由写死在-prompt-里">4. 为什么不要把路由写死在 Prompt 里</h2>
+<p>新手常见错误是在 System Prompt 里写：</p>
+<pre><code class="language-text">如果用户问知识，就查资料库；
+如果用户要操作订单，就调用工具。</code></pre>
+<p>这很危险。</p>
+<h3 id="不可靠">不可靠</h3>
+<p>LLM 是概率模型，可能把「改地址」误判成「查地址」。</p>
+<h3 id="不安全">不安全</h3>
+<p>用户可能通过提示词注入误导模型，让它走错链路或调用危险工具。</p>
+<h3 id="难维护">难维护</h3>
+<p>每次新增功能、新工具、新风险规则，都要改 Prompt。一改 Prompt，其他能力也可能漂移。</p>
+<p>正确做法：</p>
+<pre><code class="language-text">把路由从模型推理责任中剥离出来，变成 Gateway 中由产品代码控制的确定性逻辑。</code></pre>
+<p>LLM 可以辅助意图识别，但最终路由决策应该由 Gateway 和策略规则裁决。</p>
+<h2 id="4-1-反例-让模型自己路由的翻车点">4.1 反例：让模型自己路由的翻车点</h2>
+<p>错误做法：</p>
+<pre><code class="language-text">System Prompt：如果用户要查资料就走 RAG，如果用户要操作系统就调用工具。</code></pre>
+<p>翻车点：</p>
+<ul><li>用户说「看看当前地址」，模型误以为可以改地址。</li><li>用户通过提示注入诱导模型调用危险工具。</li><li>新增一个工具后，旧 Prompt 的行为发生漂移。</li><li>高风险请求没有经过权限和风险判断。</li></ul>
+<p>路由不是聊天策略，而是产品安全逻辑。</p>
+<h2 id="5-gateway-应该做什么">5. Gateway 应该做什么</h2>
+<p>Gateway 是入口层和调度中心。</p>
+<p>它负责：</p>
+<ul><li>统一接收不同入口的请求。</li><li>做输入清洗。</li><li>识别意图。</li><li>判断风险等级。</li><li>判断权限。</li><li>选择业务链路。</li><li>加载对应 Harness。</li><li>拦截越权和高风险请求。</li></ul>
+<p>示例：环境操作型产品</p>
+<pre><code class="language-text">用户输入：把 /var/log 目录打包发给我。</code></pre>
+<p>Gateway 判断：</p>
+<ul><li>涉及文件操作。</li><li>涉及网络发送。</li><li>涉及敏感目录。</li><li>属于高风险组合。</li></ul>
+<p>路由结果：</p>
+<ul><li>普通用户：拒绝。</li><li>管理员：进入受限 Agent 链路，加载高安全 Harness。</li></ul>
+<p>高安全 Harness 可能包括：</p>
+<ul><li>工具白名单：file_read、tar/zip 受限命令、secure_send。</li><li>禁止访问非授权目录。</li><li>每一步需要确认。</li><li>全量 Trace。</li></ul>
+<h2 id="6-路由决策表">6. 路由决策表</h2>
+<p>PM 应该在 PRD 中定义路由决策表。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>入口来源</th><th>意图特征</th><th>识别出的工具需求</th><th>风险等级</th><th>路由决策</th></tr></thead>
+<tbody>
+<tr><td>聊天消息</td><td>查看、列出、搜索</td><td>file_read、browser 只读</td><td>低</td><td>Safe Skill</td></tr>
+<tr><td>聊天消息</td><td>分析、统计、合并</td><td>bash、python</td><td>中</td><td>Agent，低资源沙箱</td></tr>
+<tr><td>CLI 命令</td><td>scp、wget、sudo</td><td>network、bash 高危命令</td><td>高</td><td>高安全 Agent，人工审核</td></tr>
+<tr><td>定时任务</td><td>固定脚本任务</td><td>预设工具集</td><td>中/低</td><td>受限 Agent，执行完发报告</td></tr>
+</tbody></table></div>
+<p>这张表是产品逻辑的宪法，不应该散落在 Prompt 里。</p>
+<h2 id="7-loop-是什么">7. Loop 是什么</h2>
+<p>Agent 语境里的 Loop，不是代码里的 for/while 本身，而是回合制执行：</p>
+<pre><code class="language-text">模型输出一个动作
+→ 系统执行动作
+→ 把结果拿回来喂给模型
+→ 模型根据新信息继续决定下一步
+→ 直到完成或停止</code></pre>
+<p>每一轮叫一个 Step。</p>
+<p>伪代码：</p>
+<pre><code class="language-text">repeat until should_stop:
+  next = llm.think(context)
+  if next is answer:
+    return render(next)
+  if next is tool_call:
+    obs = run_tool_safely(next)
+    context.append(obs)</code></pre>
+<p>常见说法：</p>
+<ul><li>ReAct。</li><li>Tool-use loop。</li><li>Agent loop。</li><li>Reasoning-Action loop。</li></ul>
+<p>本质都是：</p>
+<pre><code class="language-text">想 → 做 → 看 → 再想</code></pre>
+<h2 id="8-loop-不是搜索">8. Loop 不是搜索</h2>
+<p>Loop 不等于 RAG，不等于搜索工具。</p>
+<p>搜索只是可能被调用的一种工具。</p>
+<p>在环境操作型产品里，工具可能是：</p>
+<ul><li>bash。</li><li>文件读写。</li><li>浏览器操作。</li><li>代码执行。</li><li>系统命令。</li></ul>
+<p>所以 Loop 更准确的说法是：</p>
+<pre><code class="language-text">执行回合 / Execution Steps</code></pre>
+<p>不是「搜索轮次」。</p>
+<h2 id="9-manus-like-产品里的-loop-示例">9. Manus-like 产品里的 Loop 示例</h2>
+<p>用户任务：</p>
+<pre><code class="language-text">帮我把这个目录下所有 CSV 合并成一份，并统计每列空值率。</code></pre>
+<p>执行回合：</p>
+<pre><code class="language-text">Step 1: 查看目录
+→ bash: ls /workspace/
+→ 观察：file1.csv file2.csv file3.csv
+
+Step 2: 读取文件头
+→ file_read: head(file1.csv)
+→ 观察：col_a,col_b,col_c
+
+Step 3: 写合并脚本并运行
+→ python_run: merge.py
+→ 观察：done / error / stdout
+
+Step 4: 验证产物
+→ file_read: head(out.csv)
+
+Step 5: 返回结果</code></pre>
+<p>这就是 Agent Loop：不是搜索，而是干活时的步骤链条。</p>
+<h2 id="9-1-允许的动作序列模板">9.1 允许的动作序列模板</h2>
+<p>对于环境操作型 Agent，不要让模型随便发明流程，可以给它预设可接受的动作序列。</p>
+<p>例如 CSV 处理任务：</p>
+<pre><code class="language-text">目录探测 → 读取样本 → 生成执行计划 → 用户确认高风险步骤 → 执行脚本 → 验证产物 → 交付结果</code></pre>
+<p>动作序列表：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Step 类型</th><th>允许工具</th><th>目标</th><th>风险控制</th></tr></thead>
+<tbody>
+<tr><td>目录探测</td><td><code>ls</code>、file_list</td><td>了解文件结构</td><td>只允许 workspace</td></tr>
+<tr><td>读取样本</td><td>file_read</td><td>判断格式</td><td>限制读取大小</td></tr>
+<tr><td>生成计划</td><td>LLM</td><td>给出执行方案</td><td>高风险命令需确认</td></tr>
+<tr><td>执行脚本</td><td>python_run/bash 受限命令</td><td>处理文件</td><td>沙箱、超时、禁止危险命令</td></tr>
+<tr><td>验证产物</td><td>file_read/stat</td><td>检查结果</td><td>只读</td></tr>
+<tr><td>交付结果</td><td>final_answer/file_export</td><td>返回摘要和文件</td><td>记录 Trace</td></tr>
+</tbody></table></div>
+<h2 id="10-loop-为什么必须被-harness-管住">10. Loop 为什么必须被 Harness 管住</h2>
+<p>如果放任模型想继续就继续，可能出现：</p>
+<ul><li>无限循环。</li><li>API 账单爆炸。</li><li>重复调用工具。</li><li>越权访问。</li><li>执行危险命令。</li><li>被工具返回内容注入。</li></ul>
+<p>Harness 必须定义停止条件。</p>
+<p>常见停止条件：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>停止条件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>max_steps</td><td>最多执行几步</td></tr>
+<tr><td>max_time</td><td>总时长上限</td></tr>
+<tr><td>max_cost</td><td>单次任务成本上限</td></tr>
+<tr><td>no_progress</td><td>连续 N 步无新增信息</td></tr>
+<tr><td>security_stop</td><td>命中禁止模式立即停止</td></tr>
+<tr><td>user_stop</td><td>用户中止任务</td></tr>
+<tr><td>completion</td><td>达到完成状态</td></tr>
+</tbody></table></div>
+<h2 id="11-安全停止示例">11. 安全停止示例</h2>
+<p>环境操作型产品必须特别关注：</p>
+<ul><li>逃出 workspace。</li><li>访问 private IP。</li><li>调用 <code>sudo</code>。</li><li>执行 <code>rm -rf</code>。</li><li>上传敏感文件。</li><li>下载未知脚本。</li><li>连接未授权网络。</li></ul>
+<p>这些情况应触发 security_stop，而不是继续交给模型解释。</p>
+<h2 id="12-prd-里应该写什么">12. PRD 里应该写什么</h2>
+<p>至少写清：</p>
+<ul><li>入口来源。</li><li>路由决策表。</li><li>意图识别方式。</li><li>风险等级。</li><li>路由结果。</li><li>加载哪个 Harness。</li><li>Agent 最大步数。</li><li>单步和总任务超时。</li><li>no_progress 判断。</li><li>security_stop 条件。</li><li>用户中止方式。</li><li>Trace 字段。</li></ul>
+<h2 id="12-1-prd-可粘贴写法">12.1 PRD 可粘贴写法</h2>
+<pre><code class="language-text">系统在 Gateway 层完成路由决策，不依赖模型在 Prompt 中自行选择链路。
+Gateway 根据入口、意图、工具需求、权限和风险等级，将请求路由到 RAG、Safe Skill、Agent、拒绝或人工审核。
+进入 Agent 链路后，执行过程按 Step 运行，并受 max_steps、max_time、no_progress、security_stop 和 user_stop 约束。</code></pre>
+<p>路由决策表：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>入口</th><th>意图</th><th>工具需求</th><th>风险</th><th>路由</th><th>Harness</th></tr></thead>
+<tbody>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table></div>
+<p>Loop 控制表：</p>
+<div class="table-wrap"><table>
+<thead><tr><th>控制项</th><th>规则</th><th>触发后</th></tr></thead>
+<tbody>
+<tr><td>max_steps</td><td></td><td>停止并总结</td></tr>
+<tr><td>max_time</td><td></td><td>停止并提示</td></tr>
+<tr><td>no_progress</td><td></td><td>停止/转人工</td></tr>
+<tr><td>security_stop</td><td></td><td>立即停止并审计</td></tr>
+<tr><td>user_stop</td><td></td><td>中断任务</td></tr>
+</tbody></table></div>
+<h2 id="13-人话总结">13. 人话总结</h2>
+<p>路由是入口层的调度中心。</p>
+<p>它决定用户请求走 RAG、Safe Skill、Agent、拒绝还是人工审核。</p>
+<p>不要把路由写死在 Prompt 里，因为路由是安全和业务决策，必须由 Gateway 可靠执行。</p>
+<p>Loop 是 Agent 的回合制执行。</p>
+<p>模型每步选择一个工具执行，把结果拿回来，再决定下一步。Harness 决定它能不能继续走。</p>
+<h2 id="14-一句可复述总结">14. 一句可复述总结</h2>
+<p>路由不能靠 Prompt 猜，必须由 Gateway 决定；Loop 不能让模型无限跑，必须由 Harness 刹车。</p>
+        </div>
+        <section class="not-prose mt-12 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+  <div class="mb-5">
+    <span class="rounded-full px-3 py-1 text-xs font-black ring-1 bg-blue-50 text-blue-700 ring-blue-200">实战化补充</span>
+    <h2 class="mt-4 text-2xl font-black tracking-tight text-slate-950">把「Gateway 路由与 Agent Loop」用到真实工作里</h2>
+    <p class="mt-2 text-slate-600">这一段不是补术语，而是帮你把文章从“读懂”推进到“能用”。公开分享时，读者最需要的通常不是更多概念，而是知道下一步该怎么做。</p>
+  </div>
+  <div class="grid gap-4 lg:grid-cols-2">
+    <div class="rounded-lg bg-slate-50 p-4">
+      <h3 class="text-base font-black text-slate-950">轻松理解</h3>
+      <p class="mt-2 text-sm leading-7 text-slate-600">Agent 不是更会聊天的人，而是一个在受控循环里做事的调度员：想一步、调工具、看结果、再决定下一步。</p>
+    </div>
+    <div class="rounded-lg bg-slate-50 p-4">
+      <h3 class="text-base font-black text-slate-950">业务小案例</h3>
+      <p class="mt-2 text-sm leading-7 text-slate-600">客服改地址场景里，Agent 不能直接“想改就改”。它应该先查订单、判断状态、生成改动预览、让用户确认，再调用改地址工具并留下 Trace。</p>
+    </div>
+    <div class="rounded-lg bg-slate-50 p-4">
+      <h3 class="text-base font-black text-slate-950">常见翻车点</h3>
+      <ul class="mt-2 space-y-2 text-sm leading-7 text-slate-600">
+        <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-500"></span><span>把高风险工具直接暴露给模型</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-500"></span><span>只设计 happy path，没有超时、失败和人工接管</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-500"></span><span>把路由、权限和审计都写进 Prompt</span></li>
+      </ul>
+    </div>
+    <div class="rounded-lg bg-slate-50 p-4">
+      <h3 class="text-base font-black text-slate-950">建议沉淀的交付物</h3>
+      <ul class="mt-2 space-y-2 text-sm leading-7 text-slate-600">
+        <li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"></span><span>工具白名单</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"></span><span>Skill 登记表</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"></span><span>Agent Loop 流程图</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"></span><span>Gateway 路由规则</span></li><li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500"></span><span>审计与人工确认策略</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-4 rounded-lg border border-dashed border-slate-300 bg-white p-4">
+    <h3 class="text-base font-black text-slate-950">读完马上做</h3>
+    <p class="mt-2 text-sm leading-7 text-slate-600">选一个你熟悉的业务动作，拆成 5 个 Skill，并给每个 Skill 标注风险等级和是否需要人工确认。</p>
+  </div>
+  <div class="mt-4 rounded-lg bg-slate-950 p-4 text-white">
+    <div class="text-xs font-black uppercase text-slate-400">一句可复述总结</div>
+    <p class="mt-2 text-base font-semibold leading-7">学习「Gateway 路由与 Agent Loop」的重点，不是背定义，而是把它变成可判断、可设计、可验收、可复盘的产品工作。</p>
+  </div>
+  <p class="mt-4 text-xs text-slate-400">增强来源：02-核心知识点详解/20-Gateway路由与Agent Loop.md · 主题识别：Agent 与能力编排</p>
+</section>
+        <nav class="mt-6 grid gap-3 sm:grid-cols-2">
+          <a class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm hover:border-slate-300" href="doc-024.html"><span class="text-xs font-bold text-slate-400">上一篇</span><strong class="mt-1 block text-slate-950">Skill 能力单元与暴露策略</strong></a><a class="rounded-xl border border-slate-200 bg-white p-4 text-right shadow-sm hover:border-slate-300" href="doc-026.html"><span class="text-xs font-bold text-slate-400">下一篇</span><strong class="mt-1 block text-slate-950">实战项目：AI 用户研究洞察助手</strong></a>
+        </nav>
+      </article>
+      <aside class="hidden xl:block">
+        <div class="sticky top-24 space-y-4">
+          <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+            <div class="mb-3 text-sm font-black text-slate-950">本文目录</div>
+            <a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#0-一句话抓住本质">0. 一句话抓住本质</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#1-这两个概念是什么">1. 这两个概念是什么</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#2-路由是什么">2. 路由是什么</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#2-1-用汽车比喻讲明白">2.1 用汽车比喻讲明白</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#3-常见路由结果">3. 常见路由结果</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#4-为什么不要把路由写死在-prompt-里">4. 为什么不要把路由写死在 Prompt 里</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#不可靠">不可靠</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#不安全">不安全</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 pl-5" href="#难维护">难维护</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#4-1-反例-让模型自己路由的翻车点">4.1 反例：让模型自己路由的翻车点</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#5-gateway-应该做什么">5. Gateway 应该做什么</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#6-路由决策表">6. 路由决策表</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#7-loop-是什么">7. Loop 是什么</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#8-loop-不是搜索">8. Loop 不是搜索</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#9-manus-like-产品里的-loop-示例">9. Manus-like 产品里的 Loop 示例</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#9-1-允许的动作序列模板">9.1 允许的动作序列模板</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#10-loop-为什么必须被-harness-管住">10. Loop 为什么必须被 Harness 管住</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#11-安全停止示例">11. 安全停止示例</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#12-prd-里应该写什么">12. PRD 里应该写什么</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#12-1-prd-可粘贴写法">12.1 PRD 可粘贴写法</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#13-人话总结">13. 人话总结</a><a class="block rounded-md px-2 py-1.5 text-sm leading-5 text-slate-500 hover:bg-slate-100 hover:text-slate-950 font-semibold" href="#14-一句可复述总结">14. 一句可复述总结</a>
+          </div>
+          <div class="rounded-xl border border-blue-200 bg-blue-50 p-4">
+            <div class="text-sm font-black text-slate-950">模块目标</div>
+            <p class="mt-2 text-sm leading-6 text-slate-600">把 AI 产品里最容易混淆的概念，翻译成产品经理能写进 PRD 和评审会的话。</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+  <div class="fixed inset-0 z-[90] hidden bg-slate-950/40 p-4 pt-[8vh]" data-search-modal aria-hidden="true">
+  <div class="mx-auto max-w-3xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl">
+    <div class="flex gap-3 border-b border-slate-200 p-3">
+      <input class="min-h-12 flex-1 rounded-lg border border-slate-200 px-4 text-base outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10" type="search" placeholder="搜索 RAG、Agent、Eval、治理、作品集..." data-search-input>
+      <button class="rounded-lg bg-slate-950 px-4 text-sm font-bold text-white" data-search-close>关闭</button>
+    </div>
+    <div class="max-h-[62vh] overflow-auto p-2" data-search-results></div>
+  </div>
+</div>
+  <script src="../assets/js/search-index.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

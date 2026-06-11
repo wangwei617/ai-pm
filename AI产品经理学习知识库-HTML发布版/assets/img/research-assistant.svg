@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="AI 用户研究洞察助手">
+  <defs>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef3f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#17202a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="960" height="540" fill="#f6f7fb"/>
+  <rect x="34" y="34" width="892" height="472" rx="8" fill="url(#panel)" stroke="#d8dee8" filter="url(#shadow)"/>
+  <text x="68" y="86" font-family="Arial, 'PingFang SC', sans-serif" font-size="28" font-weight="800" fill="#17202a">AI 用户研究洞察助手</text>
+  <text x="68" y="122" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#667085">从访谈材料到洞察卡片、机会点和 PRD 初稿</text>
+  
+  <g font-family="Arial, 'PingFang SC', sans-serif">
+    <rect x="94" y="178" width="150" height="88" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="126" y="228" font-size="17" font-weight="800" fill="#17202a">访谈材料</text>
+    <rect x="306" y="178" width="150" height="88" rx="8" fill="#dcfce7" stroke="#0f766e"/>
+    <text x="338" y="228" font-size="17" font-weight="800" fill="#17202a">洞察卡片</text>
+    <rect x="518" y="178" width="150" height="88" rx="8" fill="#fff7ed" stroke="#d97706"/>
+    <text x="552" y="228" font-size="17" font-weight="800" fill="#17202a">机会点</text>
+    <rect x="306" y="330" width="150" height="74" rx="8" fill="#17202a"/>
+    <text x="350" y="374" font-size="17" font-weight="800" fill="#fff">PRD</text>
+    <path d="M244 222 H306 M456 222 H518 M593 266 C572 342 456 367 456 367" fill="none" stroke="#98a2b3" stroke-width="4"/>
+  </g>
+
+</svg>

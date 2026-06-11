@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="治理与信任">
+  <defs>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef3f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#17202a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="960" height="540" fill="#f6f7fb"/>
+  <rect x="34" y="34" width="892" height="472" rx="8" fill="url(#panel)" stroke="#d8dee8" filter="url(#shadow)"/>
+  <text x="68" y="86" font-family="Arial, 'PingFang SC', sans-serif" font-size="28" font-weight="800" fill="#17202a">治理与信任</text>
+  <text x="68" y="122" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#667085">权限、红线、审计和人工确认让 AI 可控上线</text>
+  
+  <g font-family="Arial, 'PingFang SC', sans-serif">
+    <path d="M402 150 L606 226 V306 C606 374 512 414 402 430 C292 414 198 374 198 306 V226 Z" fill="#ecfeff" stroke="#0f766e" stroke-width="3"/>
+    <text x="340" y="255" font-size="22" font-weight="800" fill="#17202a">可信边界</text>
+    <text x="310" y="294" font-size="15" fill="#475467">Permission · Audit · Review</text>
+    <rect x="106" y="190" width="128" height="56" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="142" y="225" font-size="15" font-weight="800" fill="#17202a">权限</text>
+    <rect x="570" y="190" width="128" height="56" rx="8" fill="#fff7ed" stroke="#d97706"/>
+    <text x="606" y="225" font-size="15" font-weight="800" fill="#17202a">红线</text>
+    <rect x="106" y="340" width="128" height="56" rx="8" fill="#ffe4e6" stroke="#e11d48"/>
+    <text x="142" y="375" font-size="15" font-weight="800" fill="#17202a">审计</text>
+    <rect x="570" y="340" width="128" height="56" rx="8" fill="#dcfce7" stroke="#0f766e"/>
+    <text x="596" y="375" font-size="15" font-weight="800" fill="#17202a">人工确认</text>
+  </g>
+
+</svg>

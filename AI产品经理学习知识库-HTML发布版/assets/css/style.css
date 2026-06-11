@@ -1,0 +1,108 @@
+html { scroll-behavior: smooth; }
+body { letter-spacing: 0; }
+.article-content {
+  color: #334155;
+  font-size: 17px;
+  line-height: 1.9;
+}
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+  color: #020617;
+  letter-spacing: 0;
+  scroll-margin-top: 96px;
+}
+.article-content h2 {
+  margin-top: 2.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 1.72rem;
+  line-height: 1.25;
+  font-weight: 900;
+}
+.article-content h3 {
+  margin-top: 1.9rem;
+  font-size: 1.22rem;
+  line-height: 1.35;
+  font-weight: 900;
+}
+.article-content p { margin: 1rem 0; }
+.article-content ul,
+.article-content ol {
+  margin: 1rem 0;
+  padding-left: 1.35rem;
+}
+.article-content li { margin: .4rem 0; }
+.article-content strong { color: #0f172a; font-weight: 850; }
+.article-content a { color: #0f766e; text-decoration: underline; text-underline-offset: 3px; }
+.article-content code {
+  border-radius: .4rem;
+  background: #f1f5f9;
+  padding: .12rem .35rem;
+  color: #be123c;
+  font-size: .9em;
+}
+.article-content pre {
+  position: relative;
+  overflow: auto;
+  margin: 1.2rem 0;
+  border-radius: .75rem;
+  background: #0f172a;
+  padding: 1.1rem;
+  color: #f8fafc;
+  line-height: 1.7;
+}
+.article-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+.copy-code {
+  position: absolute;
+  right: .65rem;
+  top: .65rem;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: .45rem;
+  background: rgba(255,255,255,.1);
+  color: white;
+  padding: .25rem .55rem;
+  font-size: 12px;
+  font-weight: 800;
+}
+.article-content blockquote {
+  margin: 1.3rem 0;
+  border-left: 4px solid #0f766e;
+  border-radius: .75rem;
+  background: #f0fdfa;
+  padding: .9rem 1.1rem;
+  color: #115e59;
+}
+.table-wrap {
+  overflow: auto;
+  margin: 1.2rem 0;
+  border: 1px solid #e2e8f0;
+  border-radius: .75rem;
+}
+.article-content table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  background: white;
+}
+.article-content th,
+.article-content td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: .8rem .9rem;
+  text-align: left;
+  vertical-align: top;
+}
+.article-content th {
+  background: #f8fafc;
+  color: #475569;
+  font-size: .82rem;
+  font-weight: 900;
+}
+.article-content tr:last-child td { border-bottom: 0; }
+[data-search-modal].open { display: block; }
+#sidebar.open { transform: translateX(0); }

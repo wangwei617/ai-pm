@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Eval 质量系统">
+  <defs>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef3f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#17202a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="960" height="540" fill="#f6f7fb"/>
+  <rect x="34" y="34" width="892" height="472" rx="8" fill="url(#panel)" stroke="#d8dee8" filter="url(#shadow)"/>
+  <text x="68" y="86" font-family="Arial, 'PingFang SC', sans-serif" font-size="28" font-weight="800" fill="#17202a">Eval 质量系统</text>
+  <text x="68" y="122" font-family="Arial, 'PingFang SC', sans-serif" font-size="16" fill="#667085">样本集、评分维度、回归集和线上反馈组成闭环</text>
+  
+  <g font-family="Arial, 'PingFang SC', sans-serif">
+    <rect x="108" y="172" width="160" height="74" rx="8" fill="#eef2ff" stroke="#2563eb"/>
+    <text x="146" y="216" font-size="18" font-weight="800" fill="#17202a">样本集</text>
+    <rect x="326" y="172" width="160" height="74" rx="8" fill="#dcfce7" stroke="#0f766e"/>
+    <text x="360" y="216" font-size="18" font-weight="800" fill="#17202a">评分器</text>
+    <rect x="544" y="172" width="160" height="74" rx="8" fill="#fff7ed" stroke="#d97706"/>
+    <text x="578" y="216" font-size="18" font-weight="800" fill="#17202a">质量门</text>
+    <rect x="326" y="328" width="160" height="74" rx="8" fill="#ffe4e6" stroke="#e11d48"/>
+    <text x="360" y="372" font-size="18" font-weight="800" fill="#17202a">回归集</text>
+    <path d="M268 209 H326 M486 209 H544 M624 246 C610 318 486 365 486 365 M326 365 C224 350 188 280 188 246" fill="none" stroke="#98a2b3" stroke-width="4"/>
+  </g>
+
+</svg>
